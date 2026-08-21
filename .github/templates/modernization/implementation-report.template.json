@@ -1,0 +1,26 @@
+{
+    "schemaVersion": 1,
+    "artifactType": "implementation-report",
+    "applicationId": "APP-SURVDEMO",
+    "sourceRevision": "replace-with-immutable-source-revision",
+    "sliceId": "SLICE-SURVDEMO-001",
+    "planRevision": "1",
+    "contractRevision": "1",
+    "oracleSetRevision": "1",
+    "backendPlatform": "java-spring-or-dotnet-aspnet-core",
+    "targetRoot": "replace-with-matching-approved-target-root",
+    "targetRevision": "replace-with-target-revision",
+    "changedComponents": [],
+    "checks": [],
+    "dataMigrationChecks": {
+        "cleanInstall": "not-run",
+        "supportedUpgradePaths": "not-run",
+        "repeatabilityOrRestart": "not-run",
+        "schemaMetadata": "not-run",
+        "dataReconciliation": "not-run",
+        "rejectReconciliation": "not-run",
+        "recoveryRehearsal": "not-run"
+    },
+    "residualRisks": [],
+    "rollbackStatus": "not-tested"
+}

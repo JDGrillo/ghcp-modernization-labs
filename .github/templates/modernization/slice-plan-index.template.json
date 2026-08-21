@@ -1,0 +1,36 @@
+{
+    "schemaVersion": 1,
+    "artifactType": "slice-plan-index",
+    "applicationId": "APP-SURVDEMO",
+    "sourceRevision": "replace-with-immutable-source-revision",
+    "sliceId": "SLICE-SURVDEMO-001",
+    "planRevision": "1",
+    "contractRevision": "1",
+    "oracleSetRevision": "1",
+    "backendPlatform": "java-spring-or-dotnet-aspnet-core",
+    "targetRoot": "replace-with-matching-approved-target-root",
+    "status": "draft",
+    "planPath": "modernization/APP-SURVDEMO/plans/SLICE-SURVDEMO-001/slice-plan.md",
+    "traceabilityIndex": "modernization/APP-SURVDEMO/plans/SLICE-SURVDEMO-001/traceability.json",
+    "contractPaths": [],
+    "ruleIds": [],
+    "interfaceIds": [],
+    "oracleIds": [],
+    "dataMigration": {
+        "inScope": true,
+        "sourceSnapshotReference": "replace-with-protected-immutable-snapshot-reference",
+        "sourceToTargetMapPath": "modernization/APP-SURVDEMO/architecture/database/source-to-target-map.csv",
+        "dataProfilePath": "modernization/APP-SURVDEMO/architecture/database/data-profile.md",
+        "migrationRunbookPath": "modernization/APP-SURVDEMO/plans/SLICE-SURVDEMO-001/data-migration-runbook.md",
+        "reconciliationPlanPath": "modernization/APP-SURVDEMO/plans/SLICE-SURVDEMO-001/data-reconciliation-plan.md",
+        "recoveryRunbookPath": "modernization/APP-SURVDEMO/plans/SLICE-SURVDEMO-001/data-recovery-runbook.md",
+        "reconciliation": {
+            "rowCountTolerance": 0,
+            "rejectedRowTolerance": 0,
+            "controlTotalTolerance": "0.00",
+            "hashMethod": "replace-with-approved-canonicalization-and-hash-method"
+        },
+        "recoveryMode": "rollback-or-forward-recovery"
+    },
+    "criticalGaps": []
+}

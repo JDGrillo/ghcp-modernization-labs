@@ -1,0 +1,27 @@
+{
+    "schemaVersion": 1,
+    "artifactType": "validation-gate-report",
+    "applicationId": "APP-SURVDEMO",
+    "sliceId": "SLICE-SURVDEMO-001",
+    "sourceRevision": "replace-with-immutable-source-revision",
+    "planRevision": "1",
+    "contractRevision": "1",
+    "oracleSetRevision": "1",
+    "backendPlatform": "java-spring-or-dotnet-aspnet-core",
+    "targetRoot": "replace-with-matching-approved-target-root",
+    "targetRevision": "replace-with-target-revision",
+    "validationRunId": "VAL-SURVDEMO-001",
+    "environment": "local",
+    "verdict": "blocked",
+    "gates": [],
+    "dataMigrationEvidence": {
+        "sourceSnapshotIdentity": null,
+        "schemaMigrationResult": "not-run",
+        "dataReconciliationResult": "not-run",
+        "rejectReconciliationResult": "not-run",
+        "recoveryRehearsalResult": "not-run",
+        "exceptions": []
+    },
+    "findingsPath": "modernization/APP-SURVDEMO/evidence/SLICE-SURVDEMO-001/VAL-SURVDEMO-001/findings.md",
+    "criticalGaps": []
+}

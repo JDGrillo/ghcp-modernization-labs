@@ -1,0 +1,24 @@
+{
+    "schemaVersion": 1,
+    "applicationId": "APP-SURVDEMO",
+    "sourceRevision": "replace-with-immutable-source-revision",
+    "currentStage": "discovery",
+    "status": "draft",
+    "activeSlice": null,
+    "artifacts": {
+        "discoveryIndex": "modernization/APP-SURVDEMO/analysis/discovery-index.json",
+        "slicePlanIndex": null,
+        "traceabilityIndex": null,
+        "implementationReport": null,
+        "validationGateReport": null,
+        "deploymentPlan": null,
+        "deploymentReport": null
+    },
+    "approval": {
+        "decision": "pending",
+        "approvedBy": null,
+        "approvedAt": null,
+        "decisionReference": null
+    },
+    "criticalGaps": []
+}

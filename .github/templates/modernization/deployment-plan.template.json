@@ -1,0 +1,42 @@
+{
+    "schemaVersion": 1,
+    "artifactType": "deployment-plan",
+    "applicationId": "APP-SURVDEMO",
+    "sliceId": "SLICE-SURVDEMO-001",
+    "sourceRevision": "replace-with-immutable-source-revision",
+    "planRevision": "1",
+    "contractRevision": "1",
+    "oracleSetRevision": "1",
+    "backendPlatform": "java-spring-or-dotnet-aspnet-core",
+    "targetRoot": "replace-with-matching-approved-target-root",
+    "targetRevision": "replace-with-target-revision",
+    "terraformRevision": "replace-with-terraform-revision",
+    "deploymentRunId": "DEPLOY-SURVDEMO-001",
+    "environmentId": "nonproduction",
+    "azureScope": {
+        "tenantId": "replace-with-tenant-id",
+        "subscriptionId": "replace-with-subscription-id",
+        "region": "replace-with-approved-region"
+    },
+    "savedPlan": {
+        "sha256": "replace-with-plan-digest",
+        "createdAt": "replace-with-ISO-8601-timestamp",
+        "expiresAt": "replace-with-ISO-8601-timestamp",
+        "protectedLocationReference": "replace-with-protected-artifact-reference"
+    },
+    "checks": [],
+    "securityControls": [],
+    "policyExceptions": [],
+    "costEvidence": null,
+    "rollbackPath": "replace-with-repository-relative-runbook-path",
+    "databaseChange": {
+        "migrationRevision": "replace-with-migration-chain-revision",
+        "sourceSnapshotReference": "replace-with-protected-snapshot-reference",
+        "preMigrationBackupReference": "replace-with-protected-backup-reference",
+        "restoreRehearsalReference": "replace-with-evidence-reference",
+        "reconciliationPlanPath": "replace-with-repository-relative-plan-path",
+        "recoveryRunbookPath": "replace-with-repository-relative-runbook-path"
+    },
+    "approvalRoles": [],
+    "criticalGaps": []
+}

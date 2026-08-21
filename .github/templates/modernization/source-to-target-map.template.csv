@@ -1,0 +1,2 @@
+source_object,source_column,legacy_evidence,target_schema,target_table,target_column,target_type,nullable,default_or_sentinel,encoding_collation,padding_semantics,transformation_rule_id,key_or_relationship,data_classification,owner,status
+REPLACE,REPLACE,legacy-source/path:line,app,REPLACE,REPLACE,REPLACE,REPLACE,REPLACE,REPLACE,REPLACE,RULE-REPLACE,REPLACE,REPLACE,REPLACE,draft

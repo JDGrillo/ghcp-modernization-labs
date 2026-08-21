@@ -1,0 +1,23 @@
+{
+    "schemaVersion": 1,
+    "artifactType": "discovery-index",
+    "applicationId": "APP-SURVDEMO",
+    "sourceRevision": "replace-with-immutable-source-revision",
+    "status": "draft",
+    "automatedAnalysis": {
+        "inScope": false,
+        "notApplicableReason": "No repository-native automated analysis was selected for this discovery"
+    },
+    "artifacts": [
+        {
+            "artifactId": "APP-SURVDEMO-CONTEXT",
+            "type": "system-context",
+            "path": "modernization/APP-SURVDEMO/analysis/system-context.md"
+        }
+    ],
+    "ruleIds": [],
+    "interfaceIds": [],
+    "taskIds": [],
+    "oracleIds": [],
+    "criticalGaps": []
+}

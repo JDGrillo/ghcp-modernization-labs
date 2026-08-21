@@ -1,0 +1,13 @@
+{
+    "schemaVersion": 1,
+    "artifactType": "traceability-index",
+    "applicationId": "APP-SURVDEMO",
+    "sourceRevision": "replace-with-immutable-source-revision",
+    "sliceId": "SLICE-SURVDEMO-001",
+    "planRevision": "1",
+    "contractRevision": "1",
+    "oracleSetRevision": "1",
+    "backendPlatform": "java-spring-or-dotnet-aspnet-core",
+    "targetRoot": "replace-with-matching-approved-target-root",
+    "entries": []
+}
