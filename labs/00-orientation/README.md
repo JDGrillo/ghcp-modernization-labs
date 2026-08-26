@@ -109,10 +109,32 @@ Labs 9-14 additionally require the versions approved during planning for:
 - Docker Desktop when using the local SQL Server inner loop;
 - an approved Azure SQL environment for Azure compatibility or readiness claims.
 
-Labs 15-16 additionally require Terraform, Azure access through Microsoft Entra,
-protected remote state, an approved subscription/region, private DNS and network
-ownership, and an approved private CI runner or operator path. CI/CD must use workload
-identity federation. These labs do not use Azure Developer CLI (`azd`).
+Labs 15-16 additionally require Terraform, Azure CLI, an approved disposable sandbox
+subscription and region, Microsoft Entra access for the learner, and ownership of the
+required DNS and network decisions. These labs use local Terraform state and do not
+require a pipeline or Azure Developer CLI (`azd`).
+
+### Enterprise deployment toolchain
+
+The deployment labs use a bounded single-user sandbox profile:
+
+| Responsibility | Lab tool or mechanism |
+|---|---|
+| Define and provision Azure resources | Terraform CLI with the pinned AzureRM provider |
+| Store sandbox state | Local Terraform state in the learner's protected, source-ignored workspace |
+| Authenticate the operator | Interactive Microsoft Entra sign-in through Azure CLI; no stored client secret |
+| Run plan and apply | Terraform CLI on the learner's workstation against the named sandbox subscription |
+| Authorize changes | Learner review bound to the saved-plan digest and sandbox environment; the agent cannot approve |
+| Verify Azure state | Terraform outputs and state metadata plus approved Azure APIs, portal, CLI, or monitoring queries |
+
+Azure CLI supplies the interactive Entra session and targeted queries. Terraform remains
+the provisioning engine. `azd` is not a prerequisite, fallback, or hidden wrapper
+around the lab workflow.
+
+This local-state profile is only for one learner in a disposable, nonproduction
+subscription. It has no remote locking, shared recovery, or pipeline audit trail. Never
+commit, upload, or share state or saved-plan files. A shared or persistent environment
+must move to protected remote state and workload identity federation before use.
 
 Real z/OS extraction and characterization require separate approved, least-privilege
 access. The supplied extraction supports local discovery exercises but does not prove
@@ -136,6 +158,15 @@ node --version
 docker version
 java -version    # java-spring only
 dotnet --info    # dotnet-aspnet-core only
+```
+
+Before Lab 15, verify the provisioning tool directly:
+
+```powershell
+terraform version
+az version
+az login
+az account show
 ```
 
 The generated target README supplies the approved wrapper and package-manager commands.

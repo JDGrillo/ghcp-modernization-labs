@@ -10,9 +10,14 @@ and stopping conditions. Its description determines when it is discovered. Skill
 describe **how specialist work is performed**; agents determine who owns the work and
 which tools and boundaries apply.
 
+Use [the discovery skill](../../.github/skills/discover-mainframe-application/SKILL.md)
+as the primary artifact. Its `references/` files provide specialist guidance, its
+`scripts/` files provide deterministic candidate analysis, and its procedure and stop
+conditions govern the durable discovery package.
+
 ## Exercise
 
-1. Inspect `discover-mainframe-application/SKILL.md`.
+1. Inspect the discovery skill.
 2. Identify its entry conditions, ordered procedure, minimum outputs, and prohibited
    outcomes.
 3. Inspect the bundled resources:
@@ -21,7 +26,8 @@ which tools and boundaries apply.
    - `references/zowe-extraction.md`;
    - `scripts/inventory_sources.py`;
    - `scripts/analyze_cobol.py` and `scripts/test_analyze_cobol.py`.
-4. For each resource, decide when it should be loaded and when it is irrelevant.
+4. Use the skill's ordered procedure to record where each resource is loaded and the
+   task it supports. Resources not named by the active step remain unloaded.
 5. Run the analyzer regression suite:
 
    ```powershell
@@ -37,8 +43,17 @@ which tools and boundaries apply.
    one entry point. The former needs the skill; the latter can be handled by the owning
    agent without creating the full evidence package.
 8. Inspect the planning, implementation, validation, and enterprise Azure deployment
-   skill descriptions without running them. Predict which agent should load each one
-   and why deployment remains separate from implementation.
+   skill descriptions without running them. Use this ownership map in the demo:
+
+   | Skill | Owning agent | Lifecycle responsibility |
+   |---|---|---|
+   | `plan-mainframe-modernization` | Modernization Planner | Produce an approved, bounded slice plan |
+   | `implement-mainframe-slice` | Java or .NET Implementation Agent | Implement only the approved target slice |
+   | `validate-mainframe-modernization` | Validation Critic | Independently evaluate parity and readiness evidence |
+   | `deploy-enterprise-azure-slice` | Azure Deployment Agent | Plan and execute approval-controlled Terraform deployment |
+
+   Deployment remains separate because infrastructure authority, saved-plan approval,
+   apply, drift, and rollback are not implementation responsibilities.
 
 ## Verify
 

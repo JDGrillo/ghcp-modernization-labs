@@ -1,7 +1,7 @@
 ---
 name: "Modernization Planner"
 description: "Plan an evidence-backed React and Azure SQL modernization using either current supported Java/Spring Boot or .NET/ASP.NET Core, with explicit framework choice, contracts, gates, and rollback."
-tools: [read, search, edit, execute]
+tools: [read, search, edit, execute, agent]
 agents: ["Java Implementation Agent", "Dotnet Implementation Agent"]
 user-invocable: true
 handoffs:

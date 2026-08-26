@@ -1,7 +1,7 @@
 ---
 name: "Validation Critic"
 description: "Independently review a React and Azure SQL slice using its approved Java/Spring Boot or .NET/ASP.NET Core backend, including Azure deployment, identity, security, and readiness gates."
-tools: [read, search, edit, execute]
+tools: [read, search, edit, execute, agent]
 agents: ["Azure Deployment Agent"]
 user-invocable: true
 handoffs:

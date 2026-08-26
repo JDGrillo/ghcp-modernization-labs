@@ -17,11 +17,21 @@ isolate, and where its authority stops. The Legacy Analyst can perform a narrow,
 chat-only reconnaissance request or load the discovery skill for a durable application
 evidence package. It may not design or implement the target.
 
+Inspect [the Legacy Analyst agent](../../.github/agents/legacy-analyst.agent.md) before
+the demo. Its role and tool boundaries govern both exercises; the
+[discovery skill](../../.github/skills/discover-mainframe-application/SKILL.md) is
+loaded only for Exercise B, where durable lifecycle artifacts are requested.
+
 ## Exercise A: Scoped reconnaissance
 
-1. Inspect `.github/agents/legacy-analyst.agent.md`.
-2. Predict what the agent may read, what it must not create during reconnaissance, and
-   when the full discovery skill becomes necessary.
+1. In the Legacy Analyst agent, locate its read/search tools, immutable evidence
+   boundary, prohibition on target design, and handoff boundary.
+2. Use this scope map while running the demo:
+
+   | Request | Agent behavior | Skill and artifacts |
+   |---|---|---|
+   | One named entry point, chat-only | Read and trace only the named evidence boundary | Do not load the full skill; create no files |
+   | Whole named application, durable evidence package | Run the ordered discovery workflow | Load the discovery skill; create modernization evidence and lifecycle indexes |
 3. Select **Legacy Analyst** and submit:
 
    ```text
