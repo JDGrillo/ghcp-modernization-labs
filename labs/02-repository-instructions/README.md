@@ -8,17 +8,46 @@
 Repository instructions are always-on project policy. They answer **what must remain
 true across the repository**, not how to perform one specialist workflow.
 
+Open [`.github/copilot-instructions.md`](../../.github/copilot-instructions.md). Use
+these policy groups to orient the demo:
+
+| Policy group | Important repository requirements | Demo effect |
+|---|---|---|
+| Evidence | `legacy-source/` is immutable; facts, interpretations, assumptions, and gaps remain distinct | Copilot reads legacy artifacts without editing them or inventing missing evidence |
+| Lifecycle | `modernization/<application-id>/lifecycle.json` and canonical indexes control stage and handoffs | Copilot checks lifecycle state before moving to planning or implementation |
+| Architecture | An approved slice records one backend platform and its matching target root | Copilot does not mix Spring and .NET or generate code outside the selected target |
+| Security and deployment | Azure uses reviewed Terraform, private connectivity, managed identity, and least privilege | Copilot does not substitute `azd`, public data access, or stored credentials |
+| Approval and reporting | Agents cannot approve their own work; results must report actual pass, fail, skip, and blocked states | Copilot stops at ready for review and names missing gates rather than claiming completion |
+
 ## Exercise
 
-1. Before opening `.github/copilot-instructions.md`, predict five policies that must
-   apply to discovery, planning, implementation, validation, and deployment.
-2. Inspect the file and classify each rule as evidence, lifecycle, architecture,
-   security, or reporting policy.
-3. Re-run the bounded request from Lab 1 and identify visible effects of the policy.
-4. Ask Copilot to implement a React screen directly from `SURVDEMO` without discovery
-   or a plan. Observe which repository policies prevent that transition.
-5. Find the rules covering human approval, the canonical lifecycle manifest, the
-   selected backend/target-root pair, and Terraform-only Azure deployment.
+1. Read the repository instructions using the five policy groups above. Locate the
+   exact rule for each demo effect.
+2. Re-run the bounded request from Lab 1. Point out where the response demonstrates
+   the evidence boundary, immutable legacy source, and explicit uncertainty.
+3. Demonstrate lifecycle enforcement with this prompt:
+
+   ```text
+   Explain whether a React screen can be implemented directly from
+   legacy-source/DEV1/SURVDEMO. Cite the repository policies and artifacts that must
+   exist first. Do not create or edit files.
+   ```
+
+   The response should point to the lifecycle manifest, approved source-to-target
+   mapping and plan, selected backend/target-root pair, tests and traceability, and
+   required human approval. It should not start implementation.
+4. Demonstrate deployment policy with this prompt:
+
+   ```text
+   From the repository instructions, summarize the required Azure deployment path
+   and the controls that prohibit an azd-based or public-data-plane shortcut.
+   ```
+
+   The response should identify reviewed Terraform, the declared state profile,
+   private data-plane connectivity, managed identities, policy and diagnostics, and
+   approval bound to a saved-plan digest. Local state is limited to the disposable,
+   single-user sandbox; shared or persistent environments require protected remote
+   state and federated automation identity.
 
 ## Verify
 
@@ -28,8 +57,11 @@ Create a two-column note in chat:
 |---|---|
 | Legacy evidence is immutable | Copilot reads but does not edit source |
 | Agents cannot approve their own work | Discovery stops at ready for review |
+| Lifecycle artifacts control transitions | Copilot checks the manifest and canonical indexes before advancing |
+| One backend and target root are selected | Copilot keeps generated code in the approved stack and location |
+| Azure deployment uses reviewed Terraform | Copilot rejects `azd` and requires the prescribed deployment controls |
 
-Add at least three more rows from your observations.
+Confirm each row against the repository instructions and the two demo responses.
 
 ## Explain
 

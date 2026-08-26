@@ -121,6 +121,13 @@ SQL; private DNS and explicit egress; managed runtime identities; Microsoft Entr
 and SQL authentication; workload identity federation for CI/CD; least-privilege RBAC;
 diagnostics, alerts, policy, backup, and cost controls.
 
+Select the Terraform state and execution profile before planning. The lab's declared
+disposable, single-user sandbox may use local state in a protected, source-ignored
+workspace and the learner's interactive Microsoft Entra identity. Never commit,
+upload, or share state or plan files. Shared or persistent environments require a
+protected remote backend, workload identity federation, locking, recovery, and an
+approved private runner path.
+
 Run format, validate, lint, tests, security/policy scans, cost estimation, and plan.
 Store a saved plan only as a protected short-lived artifact and record its SHA-256
 digest. Bind the migration revision, protected source snapshot and pre-migration backup,

@@ -9,21 +9,35 @@ Instructions guide model behavior. Hooks execute deterministic policy at lifecyc
 events. This repository uses a `PreToolUse` hook to deny recognized mutations of
 immutable evidence.
 
+The demo uses three connected artifacts:
+
+| Artifact | Role in the demo |
+|---|---|
+| [Hook configuration](../../.github/hooks/protect-legacy-source.json) | Registers the `PreToolUse` event, command, and timeout |
+| [Hook implementation](../../.github/hooks/protect-legacy-source.py) | Classifies tools and paths and returns allow or deny responses |
+| [Hook regression suite](../../.github/hooks/test_protect_legacy_source.py) | Defines allowed reads, denied mutations, conservative terminal handling, and unrelated commands |
+
 ## Exercise
 
-1. Inspect `.github/hooks/protect-legacy-source.json` and identify the event, command,
-   and timeout.
-2. Inspect `protect-legacy-source.py`. Find the read-only tools, mutating tools, path
-   detection, terminal-command detection, and deny response.
-3. Predict the result of each case in `test_protect_legacy_source.py`.
+1. Inspect the hook configuration and connect its event, command, and timeout to the
+   implementation.
+2. In the implementation, locate the read-only tools, mutating tools, path detection,
+   terminal-command detection, and deny response.
+3. Read the regression suite as the executable behavior contract. Map each test to
+   one of the expected outcomes listed under **Verify**.
 4. Run:
 
    ```powershell
    python -B .github/hooks/test_protect_legacy_source.py -v
    ```
 
-5. Ask Copilot to explain why a terminal command mentioning the protected directory
-   is denied even if the command appears to read a file.
+5. Use this demo prompt:
+
+   ```text
+   Using the hook configuration, implementation, and tests, explain why a terminal
+   command mentioning legacy-source is denied even when it appears read-only. Cite
+   the deterministic behavior that the regression suite verifies.
+   ```
 
 ## Verify
 

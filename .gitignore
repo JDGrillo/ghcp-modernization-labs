@@ -18,6 +18,12 @@
 *.log
 *.pid
 .eslintcache
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
 .idea/
 .vscode/
 *.iml

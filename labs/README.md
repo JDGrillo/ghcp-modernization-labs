@@ -47,16 +47,17 @@ criteria used through the rest of the practicum.
 
 The sequence repeatedly uses five learning actions:
 
-1. **Predict** what Copilot will know, load, allow, or produce.
+1. **Orient** to the named repository artifacts, their purpose, and their expected effect.
 2. **Inspect** the customization file and its activation mechanism.
-3. **Invoke** the primitive against real repository evidence.
+3. **Demonstrate** the primitive with a provided prompt or command against real evidence.
 4. **Verify** an observable response, artifact, command result, or denied action.
 5. **Explain** why a neighboring primitive would not solve the same problem.
 
 Lab 0 establishes orientation and readiness. Labs 1-8 label the observable checks as
 **Verify**; implementation and deployment Labs 9-16 make those checks stricter under
-**Gate**; Lab 17 returns to **Verify** for the transfer exercise. Predictions and
-explanations may appear in the exercise text instead of as standalone headings.
+**Gate**; Lab 17 returns to **Verify** for the transfer exercise. Each lab identifies
+the important artifacts and expected behavior before asking the learner to demonstrate
+or verify them.
 
 Do not modify `legacy-source/`. Preserve generated `modernization/` artifacts from Lab
 6 onward and `target/` artifacts from Lab 9 onward because they are cumulative
@@ -69,7 +70,7 @@ A learner completes the series when they can:
 - distinguish instructions, path instructions, skills, agents, handoffs, and hooks;
 - explain when separate Java/.NET agents are preferable to one conditional agent and
     route from lifecycle state rather than conversational preference;
-- predict when each primitive is loaded or invoked;
+- identify from repository configuration when each primitive is loaded or invoked;
 - trace a recovered rule from immutable evidence through plan, code, test, and validation;
 - distinguish domain, API, database, frontend, local integrated, Azure compatibility,
     parity, Terraform plan/apply, Azure validation, and readiness evidence;

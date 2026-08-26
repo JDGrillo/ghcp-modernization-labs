@@ -90,6 +90,10 @@ with approved private connectivity. Azure Developer CLI (`azd`) is not used.
 
 The planner records `backendPlatform`, `targetRoot`, runtime support, and dependency decisions. The matching implementation agent creates target-specific startup, environment, migration, seed, and test documentation with the first approved slice.
 
+## AI-assisted work safety
+
+All AI-assisted code, scripts, configuration, and generated commands must be reviewed and vetted by a qualified human before they are executed. No infrastructure deployment may proceed until the proposed changes, saved plan, security impact, cost impact, and rollback path have been reviewed and explicitly approved through the applicable organizational process.
+
 ## Evidence standard
 
 Every modernized rule requires:

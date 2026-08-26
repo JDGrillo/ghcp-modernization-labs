@@ -39,6 +39,7 @@ Complete this decision table:
 
 Why is `applyTo: "**"` inappropriate for the database instruction file?
 
-**Exit criterion:** You can predict the instruction set from a proposed file path.
+**Exit criterion:** You can use the `applyTo` declarations to identify the instruction
+set for a proposed file path.
 
 Continue to [Lab 4](../04-hooks-and-enforcement/README.md).
