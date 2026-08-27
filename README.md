@@ -9,16 +9,16 @@ Use the [guided labs](labs/README.md) to learn the modernization process and Git
 ## Modernization lifecycle
 
 ```mermaid
-flowchart LR
-    L["Immutable legacy evidence"] --> D["Discovery and documentation"]
-    D --> P["MVP and roadmap planning"]
-    P --> I["Slice implementation"]
-    I --> V["Independent validation"]
-    V -->|findings| I
-    V -->|passed gates| A["Approved Terraform deployment"]
-    A --> X["Independent Azure validation"]
-    X -->|findings| A
-    X -->|passed gates| N["Next slice or cutover decision"]
+flowchart TB
+  L["Immutable legacy<br/>evidence"] --> D["Discovery and<br/>documentation"]
+  D --> P["MVP and roadmap<br/>planning"]
+  P --> I["Slice<br/>implementation"]
+  I --> V["Independent<br/>validation"]
+  V -->|Passed gates| A["Approved Terraform<br/>deployment"]
+  A --> X["Independent Azure<br/>validation"]
+  X -->|Passed gates| N["Next slice or<br/>cutover decision"]
+  V -. Findings .-> I
+  X -. Findings .-> A
 ```
 
 The lifecycle uses separate GitHub Copilot agents so source interpretation, planning, implementation, and criticism do not collapse into one context:
