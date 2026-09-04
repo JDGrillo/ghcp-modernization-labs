@@ -10,13 +10,17 @@ modernization or target artifacts.
 
 Copilot can search a workspace, but it should not decide an ambiguous application
 boundary or invent unavailable mainframe evidence. A useful request identifies the
-subject, task, constraints, exclusions, and expected output.
+subject, task, constraints, exclusions, and expected output. This lab evaluates
+request quality; Lab 2 identifies which protections came from always-on repository
+policy.
 
 ## Exercise
 
 1. Start a new chat with the default agent.
 2. Ask: `Modernize this mainframe application.`
-3. Record which application, capability, evidence, and output location are ambiguous.
+3. Save the response in chat. Record which application, capability, evidence boundary,
+   exclusions, and output location the request left ambiguous. Do not score unsupported
+   details as useful specificity.
 4. Inspect the `SURVDEMO` directories without asking for target design.
 5. Submit this bounded request:
 
@@ -27,8 +31,17 @@ subject, task, constraints, exclusions, and expected output.
    business rules, select an MVP, or design target code. Return the result in chat.
    ```
 
-6. Compare the two responses. Identify which improvements came from explicit user
-   context and which came from repository policy.
+6. Compare the two responses in this table:
+
+   | Request element | Unbounded response | Bounded response | Supplied by request or repository policy? |
+   |---|---|---|---|
+   | Application and source root | | | |
+   | Task and exclusions | | | |
+   | Treatment of uncertainty | | | |
+   | Output destination | | | |
+
+   Defer a detailed policy attribution until Lab 2; at this point, mark uncertain rows
+   as `verify in Lab 2` rather than guessing.
 
 ## Verify
 
@@ -38,6 +51,9 @@ The bounded response must:
 - identify multiple artifact types rather than COBOL alone;
 - avoid target architecture and implementation;
 - label uncertainty rather than filling gaps.
+
+It must also remain chat-only. Confirm that `modernization/` still contains only its
+contract README and that `target/` was not created.
 
 ## Explain
 

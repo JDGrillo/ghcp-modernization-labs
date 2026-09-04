@@ -14,6 +14,12 @@
 **/__pycache__/
 *.py[cod]
 
+# Python virtual environments
+**/.venv/
+**/venv/
+**/env/
+**/ENV/
+
 # Logs and local tool state
 *.log
 *.pid

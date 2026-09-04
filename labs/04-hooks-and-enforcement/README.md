@@ -24,7 +24,9 @@ The demo uses three connected artifacts:
 2. In the implementation, locate the read-only tools, mutating tools, path detection,
    terminal-command detection, and deny response.
 3. Read the regression suite as the executable behavior contract. Map each test to
-   one of the expected outcomes listed under **Verify**.
+   one of the expected outcomes listed under **Verify**. The suite has seven cases:
+   one dedicated read, two direct file mutations, three protected-path terminal
+   commands, and one unrelated terminal command.
 4. Run:
 
    ```powershell
@@ -41,17 +43,23 @@ The demo uses three connected artifacts:
 
 ## Verify
 
-All hook tests pass. Explain the expected outcomes:
+The command exits with code 0 and reports 7 passing tests. Explain the expected
+outcomes:
 
 - dedicated read tool: allowed;
-- patch or create under protected evidence: denied;
-- terminal command referencing protected evidence: denied;
+- patch or create under protected evidence: denied by both tested direct mutation
+  paths;
+- terminal command referencing protected evidence: denied for relative, `git clean`,
+  and absolute Windows-path cases;
 - unrelated terminal command: allowed.
 
 ## Explain
 
 Why does the hook supplement rather than replace filesystem permissions and source
-control review? Why is this invariant enforced by both instructions and a hook?
+control review? Why is this invariant enforced by both instructions and a hook? Why
+does this repository conservatively deny every terminal command that references
+`legacy-source/`, including apparently read-only commands, while allowing dedicated
+read/search tools?
 
 **Exit criterion:** You can name one policy suitable for instructions and one that
 requires deterministic enforcement.

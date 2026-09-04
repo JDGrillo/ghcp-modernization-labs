@@ -7,7 +7,7 @@ user-invocable: true
 handoffs:
   - label: "Run independent validation"
     agent: "Validation Critic"
-    prompt: "Read modernization/<application-id>/lifecycle.json and state its path, applicationId, sourceRevision, activeSlice.sliceId, planRevision, contractRevision, oracleSetRevision, targetRevision, slicePlanIndex path, traceabilityIndex path, and implementationReport path. Run the to-validation lifecycle validator. Only after it passes, independently validate that exact target revision against the referenced approved evidence and gates. Do not modify product code or expected outcomes."
+    prompt: "Read modernization/<application-id>/lifecycle.json and state its path, applicationId, sourceRevision, activeSlice.sliceId, backendPlatform, targetRoot, planRevision, contractRevision, oracleSetRevision, targetRevision, slicePlanIndex path, traceabilityIndex path, and implementationReport path. Run the to-validation lifecycle validator. Only after it passes, independently validate that exact target revision against the referenced approved evidence and gates. Do not modify product code or expected outcomes."
 ---
 
 # Java Implementation Agent

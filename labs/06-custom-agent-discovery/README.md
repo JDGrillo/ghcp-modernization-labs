@@ -10,6 +10,10 @@
 - `modernization/` contains only its contract README for a clean run.
 - The repository is under source control so the source revision can be recorded.
 
+Run `git status --short` before starting. Preserve a previous run on a branch, tag,
+commit, or separate lab copy instead of deleting approved artifacts. For a clean run,
+confirm that `modernization/APP-SURVDEMO/` does not already exist.
+
 ## Learn
 
 An agent defines **who owns a stage**, which tools it can use, what context it should
@@ -22,17 +26,16 @@ the demo. Its role and tool boundaries govern both exercises; the
 [discovery skill](../../.github/skills/discover-mainframe-application/SKILL.md) is
 loaded only for Exercise B, where durable lifecycle artifacts are requested.
 
+| Request | Agent behavior | Skill and lifecycle effect |
+|---|---|---|
+| One named entry point, chat-only | Trace only the named evidence boundary with read/search tools | Do not run full discovery; create no files |
+| Whole named application, durable evidence package | Execute the ordered discovery workflow | Load the discovery skill; create application-scoped evidence and lifecycle indexes |
+
 ## Exercise A: Scoped reconnaissance
 
 1. In the Legacy Analyst agent, locate its read/search tools, immutable evidence
    boundary, prohibition on target design, and handoff boundary.
-2. Use this scope map while running the demo:
-
-   | Request | Agent behavior | Skill and artifacts |
-   |---|---|---|
-   | One named entry point, chat-only | Read and trace only the named evidence boundary | Do not load the full skill; create no files |
-   | Whole named application, durable evidence package | Run the ordered discovery workflow | Load the discovery skill; create modernization evidence and lifecycle indexes |
-3. Select **Legacy Analyst** and submit:
+2. Select **Legacy Analyst** and submit:
 
    ```text
    Perform scoped reconnaissance only for SURVDEMO entry point SURVINQ in
@@ -44,8 +47,9 @@ loaded only for Exercise B, where durable lifecycle artifacts are requested.
    target architecture, or propose target code.
    ```
 
-4. Confirm that the response stays within the named entry point and creates no files.
-5. Explain why the result is useful scoping evidence but not an approved discovery
+3. Confirm that the response stays within the named entry point and creates no files.
+   Run `git status --short` and confirm it is unchanged from the pre-lab baseline.
+4. Explain why the result is useful scoping evidence but not an approved discovery
    package or planning input.
 
 ## Exercise B: Full discovery
@@ -67,12 +71,17 @@ loaded only for Exercise B, where durable lifecycle artifacts are requested.
    assumption when evidence is missing or conflicting.
 3. Inspect `modernization/APP-SURVDEMO/evidence/automated-analysis/analysis.json` and
    `reconciliation.md`. Trace several candidate IDs to exact source coordinates, then
-   locate their confirmed, rejected, or unresolved reconciliation decisions.
-4. Inspect `modernization/APP-SURVDEMO/lifecycle.json` and the discovery index. Confirm
-   that `automatedAnalysis` binds the analysis and reconciliation paths.
+   locate their confirmed, rejected, or unresolved reconciliation decisions. The
+   validator checks that the reconciliation file exists; the learner must review its
+   substantive decisions.
+4. Inspect `modernization/APP-SURVDEMO/lifecycle.json` and
+   `modernization/APP-SURVDEMO/analysis/discovery-index.json`. Confirm that the
+   lifecycle manifest references the index and that `automatedAnalysis` in the index
+   binds the analysis and reconciliation paths.
 5. Follow several rule, interface, task, and oracle IDs into their detailed artifacts.
-6. Run the transition validator. A draft or blocked discovery is expected to fail the
-   approval gate; an approved review package must pass all evidence checks:
+6. Run the transition validator. A `ready-for-review` or blocked discovery must fail
+   because approval has not been recorded. Capture the diagnostics; the passing form
+   of this command is deliberately deferred to Lab 7:
 
    ```powershell
    python -B .github/scripts/validate_lifecycle.py `
@@ -86,11 +95,12 @@ loaded only for Exercise B, where durable lifecycle artifacts are requested.
 ## Verify
 
 - Reconnaissance produced no lifecycle or modernization artifact.
+- Full discovery creates the canonical lifecycle manifest and JSON discovery index;
+  every path listed in the index exists.
 - Full discovery leaves stage `discovery` and status `ready-for-review` or `blocked`.
 - Approval remains pending; the agent did not approve itself.
-- Every discovery-index path exists.
 - Automated analysis matches the application and source revision, has zero failed files
-   and error diagnostics, records limitations, and has a separate reconciliation path.
+  and error diagnostics, records limitations, and has a separate reconciliation path.
 - Partial analyzer coverage is not hidden; every warning is resolved or tracked as a gap.
 - Conclusions cite immutable evidence and distinguish facts, interpretations, and gaps.
 - No target code or target architecture was created.
@@ -102,5 +112,7 @@ load a skill for full discovery instead of repeating its procedure in the agent 
 Why must deterministic analysis remain subordinate to source and runtime evidence?
 
 **Exit criterion:** Discovery is reviewable, or its blocking evidence is explicit.
+Do not continue to Lab 7 with status `blocked`, non-empty critical gaps, an unreviewed
+reconciliation, or missing indexed artifacts.
 
 Continue to [Lab 7](../07-handoffs-and-planning/README.md).

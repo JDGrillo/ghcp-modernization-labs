@@ -3,12 +3,15 @@
 **Outcome:** Understand the repository, prepare the required tools, and verify a safe
 starting state without beginning modernization.
 
+Labs 1-5 examine customization primitives, Labs 6-8 establish lifecycle and quality
+gates, and Lab 9 begins implementation. This lab verifies the starting conditions; it
+does not create modernization evidence or target code.
+
 ## What this repository teaches
 
 This repository is a lab for evidence-first modernization of COBOL and related z/OS
 artifacts into React, Azure SQL Database, and either Java/Spring Boot or .NET/ASP.NET
-Core. It does not translate files
-one by one. The process is:
+Core. It does not translate files one by one. The process is:
 
 ```mermaid
 flowchart LR
@@ -151,6 +154,18 @@ python -B .github/hooks/test_protect_legacy_source.py -v
 python -B .github/scripts/test_validate_lifecycle.py -v
 ```
 
+Record the exact versions and results. The expected baseline is:
+
+- `git rev-parse` prints this repository's root and exits with code 0;
+- `python --version` reports Python 3 and exits with code 0;
+- the hook regression suite reports 7 passing tests;
+- the lifecycle regression suite reports 16 passing tests.
+
+If the test count changes in a later repository revision, use a zero exit code and no
+failed tests as the authority; update this lab when intentionally adding or removing
+test cases. Stop on any failure rather than treating the remaining checks as proof of
+readiness.
+
 Before Lab 9, run the checks for the platform approved in Lab 7:
 
 ```powershell
@@ -159,6 +174,10 @@ docker version
 java -version    # java-spring only
 dotnet --info    # dotnet-aspnet-core only
 ```
+
+Run only the selected backend check. Docker is required when the approved local SQL
+gate uses the repository's containerized SQL Server profile; it is not needed for Labs
+0-8.
 
 Before Lab 15, verify the provisioning tool directly:
 

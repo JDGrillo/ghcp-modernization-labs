@@ -10,6 +10,11 @@ This lab proves the domain-to-application-to-HTTP path. It does not claim persis
 works. API component tests may isolate infrastructure, but mocks are labeled component
 evidence and cannot satisfy the database or parity gates.
 
+**Prerequisite:** The Lab 9 domain check is recorded as passed in the draft
+implementation report with its exact command, environment, assertion, result, artifact,
+and limit. If it is failed, skipped, blocked, or stale after a domain change, stop and
+return to Lab 9.
+
 ## Exercise
 
 1. Continue with the Java or Dotnet Implementation Agent selected by the lifecycle.
@@ -22,23 +27,29 @@ evidence and cannot satisfy the database or parity gates.
    persistence adapter, or frontend code in this run.
    ```
 
-3. Inspect the approved OpenAPI, error, identity, and transaction contracts before code.
-4. Implement application orchestration, ports, authorization, validation, idempotency,
+3. Confirm the implementation report still binds the application, source, slice, plan,
+   contract, oracle-set, backend, and target-root identities from the approved
+   lifecycle state. Do not carry results from a different target or plan revision.
+4. Inspect the approved OpenAPI, error, identity, and transaction contracts before code.
+5. Implement application orchestration, ports, authorization, validation, idempotency,
    concurrency behavior, transaction intent, API mapping, safe errors, and correlation.
-5. Require explicit DTO-to-domain mapping; do not expose persistence entities.
-6. Add focused tests for:
+6. Require explicit DTO-to-domain mapping; do not expose persistence entities or add a
+   concrete database adapter.
+7. Add focused tests for:
    - successful approved oracle cases;
    - transport syntax versus authoritative business validation;
    - unauthorized and forbidden behavior;
    - invalid, conflict, stale, duplicate, and unexpected errors that apply;
    - exact response values, status codes, safe messages, and correlation identifiers;
    - no protected data or internal exception detail in responses or logs.
-7. Run the backend compile/static checks, domain suite, API component tests, and OpenAPI
+8. Run the backend compile/static checks, domain suite, API component tests, and OpenAPI
    contract validation using the documented wrapper commands.
-8. If the backend can start without persistence by approved design, call its health
+9. If the backend can start without persistence by approved design, call its health
    endpoint. Label this process evidence only; a green health endpoint does not prove
    the use case or database.
-9. Update traceability and the draft implementation report before continuing.
+10. Update traceability and the draft implementation report before continuing. Record
+    every mock, stub, or in-memory adapter in the evidence limit and confirm no result
+    is classified as database integration or parity.
 
 Use the matching path guidance: Spring MVC/Security and Java mappings for
 `java-spring`, or ASP.NET Core endpoints/policy authorization/Problem Details and C#
@@ -54,7 +65,9 @@ Do not continue unless:
 - API requests and responses match the approved contract exactly;
 - business failures use approved public errors while unexpected causes remain diagnosable;
 - focused backend checks pass with exact commands and assertions recorded;
-- mocked infrastructure is clearly identified and not called integration or parity.
+- mocked infrastructure is clearly identified and not called integration or parity;
+- no migration, concrete SQL adapter, frontend feature, or infrastructure code was
+   added; those belong to later labs.
 
 **Exit criterion:** The backend/API component gate passes; real SQL behavior remains
 explicitly unproven.

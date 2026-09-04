@@ -9,6 +9,10 @@ Start with Lab 0 to understand the repository and verify prerequisites. Use `SUR
 for Labs 1-16 so participants can compare observations. Lab 17 uses `BANKDEMO` or
 `TRSYDEMO` as a transfer exercise.
 
+Lab numbers include Lab 0. Therefore, the first ten numbered labs are Labs 0-9;
+Lab 10 begins backend/API implementation. Labs are cumulative: do not skip a lifecycle
+gate or recreate artifacts that an earlier lab requires you to preserve.
+
 ## Learning path
 
 | Lab | GitHub Copilot primitive | Modernization outcome |
@@ -22,7 +26,7 @@ for Labs 1-16 so participants can compare observations. Lab 17 uses `BANKDEMO` o
 | 6 | Custom agents | Trace one entry point, then produce a bounded discovery package |
 | 7 | Handoffs and lifecycle gates | Compare Java and .NET, then approve one slice and backend |
 | 8 | Quality-gate strategy | Route to the matching agent and define early checks |
-| 9 | Framework-specific implementation agent | Bind approved rules to Java or C# domain tests |
+| 9 | Framework-specific implementation kickoff | Create the selected target skeleton and bind approved rules to Java or C# domain tests |
 | 10 | Backend path instructions and API gate | Prove the selected backend and HTTP behavior |
 | 11 | Database instructions and integration gate | Run migrations, backend, and real SQL persistence |
 | 12 | Frontend instructions and component gate | Prove React contract handling and accessibility |
@@ -33,15 +37,31 @@ for Labs 1-16 so participants can compare observations. Lab 17 uses `BANKDEMO` o
 | 17 | Orchestrator agent | Route a second application to its correct stage |
 
 Labs 1-5 form the customization workshop. Labs 6-7 require the lifecycle prerequisites
-from Lab 0. Labs 8-14 require the selected development toolchain, Labs 15-16 add the
-Azure/Terraform prerequisites, and Lab 17 transfers the lifecycle reasoning to a second
-application. Labs 8-16 use the shared [implementation and deployment quality
+from Lab 0. Lab 8 verifies the selected development toolchain without generating code;
+Labs 9-14 use it. Labs 15-16 add the Azure/Terraform prerequisites, and Lab 17
+transfers the lifecycle reasoning to a second application. Labs 8-16 use the shared [implementation and deployment quality
 gates](IMPLEMENTATION-GATES.md) to stop incorrect work at the earliest responsible
 layer.
 
 Read [Backend framework options](FRAMEWORK-OPTIONS.md) before approving the slice in
 Lab 7. It explains the Java/.NET choice, agent routing, version policy, and review
 criteria used through the rest of the practicum.
+
+## Sequencing and preserved state
+
+| Phase | Hard entry condition | State to preserve |
+|---|---|---|
+| Labs 0-5 | Open the repository root in a Git worktree; Python checks pass | Chat notes and actual command results; no generated lifecycle artifacts |
+| Lab 6 | Labs 1-5 complete; clean-run `modernization/` contains only its contract README | The application-scoped discovery package |
+| Lab 7 | Discovery is reviewable, critical gaps are empty, and an accountable reviewer is available | Discovery approval, then the separately reviewed slice plan and planning approval |
+| Lab 8 | `to-implementation` passes for one approved backend/target pair | A chat-only implementation gate review; do not revise approved planning artifacts |
+| Lab 9 | Lab 8 review is complete and the selected development toolchain is available | Selected target root, draft implementation report, traceability, and domain-gate evidence |
+| Lab 10 | The Lab 9 domain gate passes and is recorded | All Lab 9 state plus the backend/API component and its gate evidence |
+
+A **Verify** check in Labs 0-8 confirms that a response, customization behavior, or
+lifecycle artifact has the expected shape and authority. A **Gate** in Labs 9-16 is a
+stop-the-line executable check: failure or blocked evidence prevents work from moving
+to the next component. Human approval remains separate from both.
 
 ## Lab method
 
@@ -61,7 +81,8 @@ or verify them.
 
 Do not modify `legacy-source/`. Preserve generated `modernization/` artifacts from Lab
 6 onward and `target/` artifacts from Lab 9 onward because they are cumulative
-lifecycle checkpoints.
+lifecycle checkpoints. To repeat a stage, first preserve the current run on a branch,
+tag, commit, or separate lab copy; never delete approved evidence in place.
 
 ## Completion standard
 

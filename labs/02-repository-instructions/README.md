@@ -6,7 +6,9 @@
 ## Learn
 
 Repository instructions are always-on project policy. They answer **what must remain
-true across the repository**, not how to perform one specialist workflow.
+true across the repository**, not how to perform one specialist workflow. Instructions
+guide agent behavior; Lab 4 shows why a deterministic hook is still needed for a
+high-value mutation boundary.
 
 Open [`.github/copilot-instructions.md`](../../.github/copilot-instructions.md). Use
 these policy groups to orient the demo:
@@ -23,8 +25,9 @@ these policy groups to orient the demo:
 
 1. Read the repository instructions using the five policy groups above. Locate the
    exact rule for each demo effect.
-2. Re-run the bounded request from Lab 1. Point out where the response demonstrates
-   the evidence boundary, immutable legacy source, and explicit uncertainty.
+2. Re-run the bounded request from Lab 1. Correct the attribution column from Lab 1:
+   distinguish constraints stated by the request from behavior required even if the
+   prompt omitted it. Cite the exact repository-policy bullet for each latter claim.
 3. Demonstrate lifecycle enforcement with this prompt:
 
    ```text
@@ -62,6 +65,7 @@ Create a two-column note in chat:
 | Azure deployment uses reviewed Terraform | Copilot rejects `azd` and requires the prescribed deployment controls |
 
 Confirm each row against the repository instructions and the two demo responses.
+This table is the lab output; do not create a policy summary under `modernization/`.
 
 ## Explain
 
